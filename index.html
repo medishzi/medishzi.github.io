@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIO NRG | Energy & Engineering Systems — Coming Soon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #030712;
+            --surface: rgba(15, 23, 42, 0.72);
+            --border: rgba(56, 189, 248, 0.22);
+            --primary: #38bdf8;
+            --secondary: #10b981;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Technical Blueprint Grid */
+        .blueprint-bg {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.14), transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.10), transparent 45%),
+                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            z-index: -1;
+        }
+
+        header {
+            padding: 2rem 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.45rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-badge {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: grid;
+            place-items: center;
+            color: #030712;
+            font-size: 1.05rem;
+            box-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+        }
+
+        .status-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--secondary);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.35); }
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 6%;
+            text-align: center;
+        }
+
+        .kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 1.1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 6vw, 4.4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.8px;
+            margin-bottom: 1.3rem;
+        }
+
+        h1 span {
+            background: linear-gradient(120deg, var(--primary) 0%, #818cf8 55%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 1.08rem;
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.65;
+        }
+
+        /* Industrial Progress Card */
+        .spec-card {
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            max-width: 580px;
+            margin: 0 auto 2.4rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            text-align: left;
+        }
+
+        .spec-header {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-track {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+
+        .progress-fill {
+            width: 82%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 999px;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            font-size: 0.78rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .pillars div {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 0.6rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .pillars i {
+            color: var(--primary);
+            margin-right: 0.35rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.95rem 2rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), #0284c7);
+            color: #030712;
+            font-weight: 800;
+            font-size: 0.94rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.32);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px rgba(56, 189, 248, 0.48);
+        }
+
+        footer {
+            padding: 1.8rem 7%;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 600px) {
+            .pillars { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blueprint-bg"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-badge"><i class="fa-solid fa-bolt"></i></div>
+            <span>RIO<span style="color: var(--primary);">NRG</span></span>
+        </div>
+        <div class="status-tag">
+            <span class="pulse-dot"></span> SYSTEM DEPLOYMENT
+        </div>
+    </header>
+
+    <main>
+        <div class="kicker">Next-Gen Energy & Industrial Solutions</div>
+        <h1>Qualcosa di potente sta per <span>accendersi.</span></h1>
+        <p class="subtitle">
+            Stiamo finalizzando la nuova piattaforma <strong>RIO NRG</strong> dedicata all'ingegneria energetica, all'efficienza impiantistica e alle tecnologie industriali avanzate.
+        </p>
+
+        <div class="spec-card">
+            <div class="spec-header">
+                <span>STATUS: CALIBRAZIONE PIATTAFORMA</span>
+                <span style="color: var(--primary);">82%</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="pillars">
+                <div><i class="fa-solid fa-solar-panel"></i> Energy Tech</div>
+                <div><i class="fa-solid fa-gears"></i> Engineering</div>
+                <div><i class="fa-solid fa-shield-halved"></i> Reliability</div>
+            </div>
+        </div>
+
+        <a href="mailto:info@rionrg.com?subject=Contatto%20Anteprima%20-%20RIO%20NRG" class="cta-btn">
+            <i class="fa-solid fa-envelope"></i> Contattaci in Anteprima
+        </a>
+    </main>
+
+    <footer>
+        © 2026 <strong>RIO NRG</strong> — Padova, Italia. Tutti i diritti riservati.
+    </footer>
+</body>
+</html>
